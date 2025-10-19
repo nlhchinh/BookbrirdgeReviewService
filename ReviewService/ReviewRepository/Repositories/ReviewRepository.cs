@@ -33,5 +33,10 @@ namespace ReviewInfrastructure.Repositories
             }
             return !exist.IsActive;
         }
+
+        public async Task<List<Review>> GetReviewByBookId(int bookId)
+        {
+            return await _dbSet.Where(r => r.BookId == bookId && r.IsActive).ToListAsync();
+        }
     }
 }

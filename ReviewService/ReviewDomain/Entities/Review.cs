@@ -18,6 +18,10 @@ namespace ReviewDomain.Entities
         public string UserId { get; set; } = default!;
         [Required]
         public int BookId { get; set; }
+        [Required]
+        public int StoreId { get; set; }
+        [Required]
+        public int OrderId { get; set; }
 
         [Range(1, 5)]
         public int Rating { get; set; }

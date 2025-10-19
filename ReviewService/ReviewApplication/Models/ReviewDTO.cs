@@ -17,6 +17,9 @@ namespace ReviewApplication.Models
         [Required]
         public string UserId { get; set; } = default!;
         public int BookId { get; set; }
+        public int StoreId { get; set; }
+        [Required]
+        public int OrderId { get; set; }
 
         [Range(1, 5)]
         public int Rating { get; set; }
@@ -32,7 +35,8 @@ namespace ReviewApplication.Models
     {
         public string UserId { get; set; } = default!;
         public int BookId { get; set; }
-
+        public int StoreId { get; set; }
+        public int OrderId { get; set; }
         public int Rating { get; set; }
 
         public string Comment { get; set; } = default!;
@@ -43,7 +47,8 @@ namespace ReviewApplication.Models
     {
         public string UserId { get; set; } = default!;
         public int BookId { get; set; }
-
+        public int StoreId { get; set; }
+        public int OrderId { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; } = default!;
         public string? ImageUrl { get; set; }

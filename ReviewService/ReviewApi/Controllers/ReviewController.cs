@@ -19,9 +19,6 @@ namespace ReviewApi.Controllers
             _imageService = imageService;
         }
 
-        [HttpGet("/api/healthz")] // <-- Change: Explicitly set the absolute path
-        public IActionResult HealthCheck() => Ok("Healthy");
-
         [HttpPost]
         public async Task<IActionResult> CreateReview([FromForm] ReviewCreateRequest request)
         {
@@ -38,7 +35,10 @@ namespace ReviewApi.Controllers
                 BookId = request.BookId,
                 Rating = request.Rating,
                 Comment = request.Comment,
-                ImageUrl = imageUrl
+                ImageUrl = imageUrl,
+                StoreId = request.StoreId,
+                OrderId = request.OrderId
+
 
             };
 
