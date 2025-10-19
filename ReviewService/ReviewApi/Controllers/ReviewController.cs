@@ -19,6 +19,9 @@ namespace ReviewApi.Controllers
             _imageService = imageService;
         }
 
+        [HttpGet("/api/healthz")] // <-- Change: Explicitly set the absolute path
+        public IActionResult HealthCheck() => Ok("Healthy");
+
         [HttpPost]
         public async Task<IActionResult> CreateReview([FromForm] ReviewCreateRequest request)
         {
