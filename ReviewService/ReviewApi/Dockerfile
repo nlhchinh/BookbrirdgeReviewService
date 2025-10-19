@@ -2,22 +2,22 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /
 
-# Copy all source code (relative to context path = UserService.Api)
+# Copy all source code
 COPY . .
 
-# Restore dependencies for UserService.Api
-RUN dotnet restore "ReviewService/ReviewService.Api/ReviewService.Api.csproj"
+# Restore dependencies
+RUN dotnet restore "ReviewService/ReviewApi/ReviewApi.csproj"
 
 # Build the application
-RUN dotnet build "ReviewService/ReviewService.Api/ReviewService.Api.csproj" -c Release -o /app/build
+RUN dotnet build "ReviewService/ReviewApi/ReviewApi.csproj" -c Release -o /app/build
 
 # Stage 2: Publish the application
 FROM build AS publish
-RUN dotnet publish "ReviewService/ReviewService.Api/ReviewService.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ReviewService/ReviewApi/ReviewApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Stage 3: Final runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "ReviewService.Api.dll"]
+ENTRYPOINT ["dotnet", "ReviewApi.dll"]
