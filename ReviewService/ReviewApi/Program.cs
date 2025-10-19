@@ -37,7 +37,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         // Lấy DbContext đã đăng ký
-        var context = services.GetRequiredService<UserDbContext>();
+        var context = services.GetRequiredService<ReviewDBContext>();
 
         // Tự động áp dụng migration
         context.Database.Migrate();
