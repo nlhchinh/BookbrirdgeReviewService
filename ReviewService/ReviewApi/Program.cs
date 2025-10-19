@@ -30,6 +30,27 @@ builder.Services.AddScoped<ReviewRepository>();
 
 var app = builder.Build();
 
+// Tự động áp dụng migrations VÀ XỬ LÝ LỖI - Cách 2
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider; // <-- chỉ tồn tại trong scope này
+    try
+    {
+        // Lấy DbContext đã đăng ký
+        var context = services.GetRequiredService<UserDbContext>();
+
+        // Tự động áp dụng migration
+        context.Database.Migrate();
+        // -------------------------------
+        Console.WriteLine("Database migration applied successfully.");
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred during database migration.");
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

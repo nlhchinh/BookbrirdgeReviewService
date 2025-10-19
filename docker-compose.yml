@@ -1,0 +1,17 @@
+
+services:
+  # 1. UserService
+  userservice:
+    build:
+      context: .
+      dockerfile: ReviewService/ReviewService.Api/Dockerfile
+    container_name: reviewservice
+    environment:
+      ConnectionStrings__UserServiceConnection: User Id=postgres.usxgseqbbiuccwzyfvey;Password=0328802216Zz.;Server=aws-1-us-east-1.pooler.supabase.com;Port=5432;Database=postgres;
+      Jwt__Key: BookbridgeJWTKey_2025_Secure_ABC123!
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - "5149:8080"
+
+volumes:
+  pgadmin_data:
