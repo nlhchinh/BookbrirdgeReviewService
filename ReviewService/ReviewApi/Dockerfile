@@ -1,6 +1,6 @@
 # Stage 1: Build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /
 
 # Copy all source code (relative to context path = UserService.Api)
 COPY . .
