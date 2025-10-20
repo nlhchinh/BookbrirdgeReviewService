@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ReviewInfrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddBookIdToReview : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,8 @@ namespace ReviewInfrastructure.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<string>(type: "text", nullable: false),
                     BookId = table.Column<int>(type: "integer", nullable: false),
+                    StoreId = table.Column<int>(type: "integer", nullable: false),
+                    OrderId = table.Column<int>(type: "integer", nullable: false),
                     Rating = table.Column<int>(type: "integer", nullable: false),
                     Comment = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
                     ImageUrl = table.Column<string>(type: "text", nullable: true),

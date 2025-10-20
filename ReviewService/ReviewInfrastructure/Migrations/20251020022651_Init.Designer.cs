@@ -12,8 +12,8 @@ using ReviewInfrastructure.DBContext;
 namespace ReviewInfrastructure.Migrations
 {
     [DbContext(typeof(ReviewDBContext))]
-    [Migration("20251019014923_AddBookIdToReview")]
-    partial class AddBookIdToReview
+    [Migration("20251020022651_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,7 +52,13 @@ namespace ReviewInfrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
                     b.Property<string>("UserId")

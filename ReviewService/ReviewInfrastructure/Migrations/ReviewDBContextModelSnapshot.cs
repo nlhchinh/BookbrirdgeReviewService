@@ -49,7 +49,13 @@ namespace ReviewInfrastructure.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Rating")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
                     b.Property<string>("UserId")
